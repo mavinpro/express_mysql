@@ -15,6 +15,7 @@ var sessionRouter = require("./routes/session");
 // Definisi lokasi untuk auth
 const loginRoutes = require("./routes/login");
 const registerRoutes = require("./routes/register");
+const productsRoutes = require("./routes/products");
 
 var app = express();
 
@@ -58,5 +59,5 @@ app.use("/session", sessionRouter);
 // Gunakan routes yang telah didefinisikan untuk auth
 app.use("/login", loginRoutes);
 app.use("/register", registerRoutes);
-
+app.use("/products", productsRoutes);
 module.exports = app;

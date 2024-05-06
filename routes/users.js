@@ -70,6 +70,9 @@ router.get("/profile", (req, res) => {
     message: "Selamat Datang di Gamelab Indonesia",
     user: req.auth,
   });
+  res.send({
+    data: products,
+  });
 });
 
 module.exports = router;
