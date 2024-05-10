@@ -5,6 +5,7 @@ var logger = require("morgan");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var flash = require("req-flash");
+const crypto = require("crypto");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

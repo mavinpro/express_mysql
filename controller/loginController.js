@@ -1,5 +1,5 @@
 const config = require("../library/database");
-
+const jwt = require("jsonwebtoken");
 let mysql = require("mysql");
 let pool = mysql.createPool(config);
 
@@ -32,6 +32,17 @@ module.exports = {
             if (error) throw error;
             if (results.length > 0) {
               // Jika data ditemukan, set sesi user tersebut menjadi true
+              const user = {
+                id: results[0].user_id,
+                userEmail: results[0].email,
+                userName: results[0].username,
+              };
+              token = jwt.sign({ user }, "secretkey");
+
+              res.cookie("token", token, {
+                httpOnly: true,
+              });
+
               req.session.loggedin = true;
               req.session.userid = results[0].user_id;
               req.session.username = results[0].username;
